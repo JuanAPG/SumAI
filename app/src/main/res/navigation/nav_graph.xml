@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listNotesFragment">
+
+    <fragment
+        android:id="@+id/listNotesFragment"
+        android:name="com.stan.sumai.ui.ListNotesFragment"
+        android:label="Mis Apuntes"
+        tools:layout="@layout/fragment_list_notes">
+
+        <action
+            android:id="@+id/action_list_to_create"
+            app:destination="@id/createNoteFragment" />
+
+        <action
+            android:id="@+id/action_list_to_detail"
+            app:destination="@id/detailNoteFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createNoteFragment"
+        android:name="com.stan.sumai.ui.CreateNoteFragment"
+        android:label="Nuevo Apunte"
+        tools:layout="@layout/fragment_create_note" />
+
+    <fragment
+        android:id="@+id/detailNoteFragment"
+        android:name="com.stan.sumai.ui.DetailNoteFragment"
+        android:label="Detalle del Apunte"
+        tools:layout="@layout/fragment_detail_note">
+
+        <argument
+            android:name="noteId"
+            app:argType="long" />
+    </fragment>
+
+</navigation>
