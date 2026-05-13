@@ -16,7 +16,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorSurface"
             app:title="Nuevo Apunte"
-            app:navigationIcon="@drawable/ic_launcher_foreground" />
+            app:navigationIcon="?attr/homeAsUpIndicator" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
