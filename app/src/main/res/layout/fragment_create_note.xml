@@ -31,7 +31,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Título -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_title"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -49,7 +48,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Contenido -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_content"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -69,7 +67,6 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Botón guardar -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"

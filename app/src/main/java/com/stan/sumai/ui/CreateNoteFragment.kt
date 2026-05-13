@@ -29,7 +29,6 @@ class CreateNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Botón de navegación del Toolbar → regresar sin guardar
         binding.toolbar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
@@ -41,11 +40,9 @@ class CreateNoteFragment : Fragment() {
         val title   = binding.etTitle.text.toString().trim()
         val content = binding.etContent.text.toString().trim()
 
-        // Limpiar errores previos
         binding.tilTitle.error   = null
         binding.tilContent.error = null
 
-        // Validación inline con TextInputLayout (Material 3)
         if (title.isEmpty()) {
             binding.tilTitle.error = "El título no puede estar vacío"
             return
@@ -56,7 +53,7 @@ class CreateNoteFragment : Fragment() {
         }
 
         viewModel.insert(NoteEntity(title = title, content = content))
-        findNavController().popBackStack()   // regresa a ListNotesFragment
+        findNavController().popBackStack()
     }
 
     override fun onDestroyView() {

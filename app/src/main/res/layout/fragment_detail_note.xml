@@ -30,7 +30,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Título del apunte -->
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
@@ -38,7 +37,6 @@
                 android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
                 android:textColor="?attr/colorOnSurface" />
 
-            <!-- Fecha -->
             <TextView
                 android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
@@ -52,7 +50,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="16dp" />
 
-            <!-- Contenido del apunte -->
             <TextView
                 android:id="@+id/tv_content"
                 android:layout_width="match_parent"
@@ -61,7 +58,6 @@
                 android:textColor="?attr/colorOnSurface"
                 android:lineSpacingMultiplier="1.5" />
 
-            <!-- Card resumen Gemini -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_summary"
                 android:layout_width="match_parent"
@@ -77,7 +73,6 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <!-- Header: título + spinner (≡ progressBar de DogApp) -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -88,7 +83,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="✨ Resumen con Gemini"
+                            android:text="Resumen con Gemini"
                             android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                             android:textColor="?attr/colorOnSecondaryContainer" />
 
@@ -102,11 +97,6 @@
 
                     </LinearLayout>
 
-                    <!--
-                        tv_error: AÑADIDO — equivalente a tvError de DogApp.
-                        Visible solo cuando viewModel.errorMessage tiene valor.
-                        Oculto por defecto.
-                    -->
                     <TextView
                         android:id="@+id/tv_error"
                         android:layout_width="match_parent"
@@ -118,7 +108,6 @@
                         android:gravity="center"
                         android:drawablePadding="8dp" />
 
-                    <!-- Texto del resumen (≡ rvDogs de DogApp) -->
                     <TextView
                         android:id="@+id/tv_summary"
                         android:layout_width="match_parent"
@@ -129,7 +118,6 @@
                         android:textColor="?attr/colorOnSecondaryContainer"
                         android:lineSpacingMultiplier="1.4" />
 
-                    <!-- Botón generar resumen -->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_summarize"
                         style="@style/Widget.Material3.Button.TonalButton"

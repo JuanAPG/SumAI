@@ -14,7 +14,6 @@ import com.stan.sumai.viewmodel.NoteViewModel
 
 class ListNotesFragment : Fragment() {
 
-    // Nulable para liberar memoria en onDestroyView (patrón Fragment + ViewBinding)
     private var _binding: FragmentListNotesBinding? = null
     private val binding get() = _binding!!
 
@@ -33,7 +32,7 @@ class ListNotesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
-        observeNotes()             // ← observer central, igual que MiListaGastos
+        observeNotes()
 
         binding.fabNewNote.setOnClickListener {
             findNavController().navigate(R.id.action_list_to_create)
@@ -41,7 +40,6 @@ class ListNotesFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        // Lambda de click: construye el Bundle con el ID y navega a Detail
         adapter = NoteAdapter { note ->
             val bundle = Bundle().apply { putLong("noteId", note.id) }
             findNavController().navigate(R.id.action_list_to_detail, bundle)
@@ -53,11 +51,6 @@ class ListNotesFragment : Fragment() {
         }
     }
 
-    /**
-     * Observa allNotes del ViewModel exactamente como el observer de MiListaGastos:
-     * - submitList() en vez de notifyDataSetChanged() (ventaja de ListAdapter)
-     * - Maneja el estado vacío mostrando/ocultando vistas
-     */
     private fun observeNotes() {
         viewModel.allNotes.observe(viewLifecycleOwner) { notes ->
             adapter.submitList(notes)
@@ -70,6 +63,6 @@ class ListNotesFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null     // evita memory leak al destruir la vista del Fragment
+        _binding = null
     }
 }

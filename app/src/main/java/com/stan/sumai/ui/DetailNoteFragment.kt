@@ -42,7 +42,6 @@ class DetailNoteFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        // Carga el apunte por ID
         viewModel.getNoteById(noteId).observe(viewLifecycleOwner) { note ->
             note ?: return@observe
             val sdf = SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault())
@@ -58,18 +57,8 @@ class DetailNoteFragment : Fragment() {
         observeSummaryState()
     }
 
-    /**
-     * Tres observers paralelos — espejo exacto del patrón DogApp:
-     *
-     *   DogApp                        SumAI
-     *   ─────────────────────────     ─────────────────────────
-     *   progressBar  VISIBLE/GONE  →  progressSummary VISIBLE/GONE
-     *   tvError      VISIBLE/GONE  →  tvError         VISIBLE/GONE
-     *   rvDogs       VISIBLE/GONE  →  tvSummary       VISIBLE/GONE
-     */
     private fun observeSummaryState() {
 
-        // 1. Carga — muestra spinner y oculta resultados/error
         viewModel.isLoading.observe(viewLifecycleOwner) { loading ->
             binding.progressSummary.visibility = if (loading) View.VISIBLE else View.GONE
             binding.btnSummarize.isEnabled     = !loading
@@ -79,7 +68,6 @@ class DetailNoteFragment : Fragment() {
             }
         }
 
-        // 2. Resumen generado — muestra texto, oculta error
         viewModel.summary.observe(viewLifecycleOwner) { text ->
             if (!text.isNullOrEmpty()) {
                 binding.tvSummary.text       = text
@@ -88,7 +76,6 @@ class DetailNoteFragment : Fragment() {
             }
         }
 
-        // 3. Error — muestra tvError, oculta resumen (igual que DogApp showError())
         viewModel.errorMessage.observe(viewLifecycleOwner) { msg ->
             if (!msg.isNullOrEmpty()) {
                 binding.tvError.text       = msg
