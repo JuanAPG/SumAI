@@ -42,7 +42,9 @@ class DetailNoteFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        viewModel.getNoteById(noteId).observe(viewLifecycleOwner) { note ->
+        viewModel.loadNoteById(noteId)
+
+        viewModel.selectedNote.observe(viewLifecycleOwner) { note ->
             note ?: return@observe
             val sdf = SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault())
             binding.tvTitle.text   = note.title
@@ -50,7 +52,7 @@ class DetailNoteFragment : Fragment() {
             binding.tvDate.text    = sdf.format(Date(note.createdAt))
 
             binding.btnSummarize.setOnClickListener {
-                viewModel.generateSummary(note.content)
+                viewModel.generateSummary(note)
             }
         }
 
