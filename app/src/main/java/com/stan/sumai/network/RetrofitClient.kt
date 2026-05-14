@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    const val API_KEY = "AIzaSyCSm-JKG9En7z5H_u0OJ4i4mnUrKsoPbGs"
+    const val API_KEY = ""
     private const val BASE_URL = "https://generativelanguage.googleapis.com/v1beta/"
 
     val service: GeminiApiService by lazy {
