@@ -81,8 +81,13 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
                         _errorMessage.value = "Gemini no devolvió respuesta"
                     }
                 } else {
-                    _errorMessage.value =
-                        "Error ${responseText.code()}: ${responseText.message()}"
+                    val errorBody = responseText.errorBody()?.string() ?: "Sin detalles"
+                    _errorMessage.value = when (responseText.code()) {
+                        429 -> "Has alcanzado el límite de peticiones. Espera un minuto."
+                        400 -> "Petición inválida"
+                        403 -> "API key inválida o sin permisos"
+                        else -> "Error ${responseText.code()}: $errorBody"
+                    }
                 }
 
             } catch (e: Exception) {
