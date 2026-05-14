@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     id("androidx.navigation.safeargs.kotlin")
-    id("kotlin-kapt")
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -41,12 +41,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.retrofit.v290)
-    implementation(libs.converter.gson.v290)
-
-    implementation(libs.androidx.navigation.fragment.ktx.v298)
-    implementation(libs.androidx.navigation.ui.ktx.v298)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -60,7 +54,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel)
 
     //annotationProcessor(libs.androidx.room.compiler)
-    kapt(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
 
     implementation(libs.androidx.lifecycle.livedata)
     implementation(libs.androidx.navigation.fragment)
@@ -72,4 +66,11 @@ dependencies {
     implementation(libs.okhttp.logging)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.cardview)
+
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.8")
+    implementation("androidx.navigation:navigation-ui-ktx:2.9.8")
+
 }
