@@ -2,15 +2,12 @@ plugins {
     alias(libs.plugins.android.application)
     id("androidx.navigation.safeargs.kotlin")
     alias(libs.plugins.ksp)
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
     namespace = "com.stan.sumai"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.stan.sumai"
@@ -37,6 +34,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -69,5 +67,4 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.9.8")
     testImplementation("junit:junit:4.13.2")
     testImplementation("com.google.truth:truth:1.4.2")
-
 }
